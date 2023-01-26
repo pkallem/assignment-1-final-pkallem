@@ -11,7 +11,6 @@ package a1;
 public class Summer {
    private int[] nums;
    // Any other data fields you decide you need can go here.
-   public int size = 0;
    public int index = 0;
    public Summer(int n) {
       /* In this constructor, first allocate an array that hold n ints and put that in nums.
@@ -19,16 +18,14 @@ public class Summer {
       you would need to do something with that field here.
       */
       /*Your code here */
-      int arr[] = new int[n];
-      nums = arr;
+      nums = new int[n];
 
    }
 
    public void add( int num ) {
      // In this method, take the parameter num and put that value into the Summer.
       /*Your code here */
-      nums[index] = num;
-      index += 1;
+      nums[index++] = num;
    }
    
    public int sum ( ) { 
@@ -49,8 +46,8 @@ public class Summer {
       and return it. */
 
       /*Your code here */
-      int high = Integer.MIN_VALUE;
-      for (int i = 0; i < size; i++) {
+      int high = nums[0];
+      for (int i = 1; i < index; i++) {
          if (nums[i] > high) {
             high = nums[i];
          }
@@ -61,8 +58,8 @@ public class Summer {
    public int low ( ) { 
      /* Find the smallest number stored in the array so far
       and return it. */
-      int low = Integer.MAX_VALUE;
-      for (int i = 0; i < size; i++) {
+      int low = nums[0];
+      for (int i = 1; i < index; i++) {
          if (nums[i] < low) {
             low = nums[i];
          }
@@ -86,7 +83,11 @@ public class Summer {
        */
 
       /*Your code here */
-      return Double.valueOf(sum())/Double.valueOf(size);
+      if (index == 0) {
+         return 0.0;
+      } else {
+         return (double) sum() / index;
+      }
 
    }
    
@@ -108,18 +109,23 @@ public class Summer {
       /*Your code here */
       int sum = 0;
       int count = 0;
-      for (int i = 0; i < size; i++) {
+      for (int i = 0; i < index; i++) {
          if (nums[i] > thresh) {
             sum += nums[i];
             count += 1;
          }
       }
-      return Double.valueOf(sum)/Double.valueOf(count);
+
+      if ((double) count == 0) {
+         return 0.0;
+      } else {
+         return (double) sum / count;
+      }
    }
    
    public int count ( ) {  
      //Return the number of ints that have been stored in the array.
-      return size;
+      return index;
      /*Your code here */
 
 

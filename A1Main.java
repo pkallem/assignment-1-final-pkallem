@@ -17,7 +17,7 @@ public class A1Main {
         /* Now get a single integer from the scanner
          lets refer to that int as N
          we will use N as an upper limit in a for loop */
-        int N = input.nextInt();
+        int n = input.nextInt();
 
         /*Your code here */
         
@@ -30,14 +30,12 @@ public class A1Main {
            -- if that int is odd, send it to the odd Summer obj
               by calling its "add" method
          The loop ends when all N integers have been obtained from input */
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             int in = input.nextInt();
             if (in % 2 == 0) {
                 even.add(in);
-                even.size += 1;
             } else {
                 odd.add(in);
-                odd.size += 1;
             }
         }
 
